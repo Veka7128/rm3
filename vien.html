@@ -5,18 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exploitation Admin</title>
     <script type="text/javascript">
-        // Ouvre la page Profile dans un nouvel onglet
         window.open('http://challenge01.root-me.org:58003/profile', '_blank');
-
-        // Ouvre la page Login dans un autre onglet
         window.open('http://challenge01.root-me.org:58003/login', '_blank');
-
-        // Une fois la page Profile chargée, récupère le DOM
         setTimeout(function() {
             var profileWindow = window.open('http://challenge01.root-me.org:58003/profile', '_blank');
             var profileDOM = profileWindow.document.documentElement.outerHTML;
-            console.log(profileDOM); // Affiche le DOM dans la console
-        }, 1000); // Attendre 1 seconde pour s'assurer que Profile est chargé
     </script>
 </head>
 <body>
